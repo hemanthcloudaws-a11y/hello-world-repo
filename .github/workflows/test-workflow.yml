@@ -1,0 +1,23 @@
+name: Testing
+on:
+ workflow_dispatch:
+
+ push: 
+   branches: 
+     - main
+ 
+ pull_request:
+  paths: 
+    - README.md
+        
+
+jobs:
+  hellow-job:
+    strategy:
+      matrix:
+        os: [ubuntu-latest , ubuntu-22.04]
+        images: ["test 01", "test01"]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Echo text     
+      run: echo "Hello, world!"  ${{ matrix.images }}
