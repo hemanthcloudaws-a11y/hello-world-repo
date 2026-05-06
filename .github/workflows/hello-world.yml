@@ -7,3 +7,10 @@ jobs:
     steps:
     - name: Echo text     
       run: echo "Hello, world!" 
+
+  test-job:
+    timeout-minutes: 1
+    runs-on: ubuntu-latest
+    steps:
+    - name:  test
+      run: sleep 10000s        
