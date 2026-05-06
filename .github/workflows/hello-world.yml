@@ -3,14 +3,11 @@ on: workflow_dispatch
 
 jobs:
   hellow-job:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest , ubuntu-22.04]
+        images: ["test 01", "test01"]
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Echo text     
-      run: echo "Hello, world!" 
-
-  test-job:
-    timeout-minutes: 1
-    runs-on: ubuntu-latest
-    steps:
-    - name:  test
-      run: sleep 10000s        
+      run: echo "Hello, world!"  ${{ matrix.images }}
